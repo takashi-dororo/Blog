@@ -1,0 +1,10 @@
+<%= link_to "登録画面へ", new_user_path %>
+<% @users.each do |user| %>
+  <p>
+    <%= user.name %>
+    <%= user.email %>
+    <!-- 削除 -->
+    <%= link_to "退会", user_path(user), method: :delete, data: { confirm: "退会しますか？" } %>
+    <%= link_to "変更", edit_user_path(user), method: :get %>
+  </p>
+<% end %>
