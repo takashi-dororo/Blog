@@ -1,9 +1,5 @@
 class UsersController < ApplicationController
 
-  def index
-    @users = User.all
-  end
-
   def show
     @user = User.find(params[:id])
   end
@@ -16,6 +12,7 @@ class UsersController < ApplicationController
     #strong parameter
     @user = User.create(user_params)
     if @user.save
+      log_in @user
       flash[:success] = "Thanks singup compelete have fun!!"
       redirect_to @user
     else
