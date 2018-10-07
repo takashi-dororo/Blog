@@ -1,6 +1,22 @@
-<%= form_for @user, url: user_path(@user), html: { method: :patch } do |f| %>
-  <p>変更</p>
-  <p>お名前：　　　　<%= f.text_field :name %></p>
-  <p>メールアドレス：<%= f.text_field :email %></p>
-  <input type="submit" value="変更する">
-<% end %>
+<div class="container-box center row">
+  <div class="container-box-content col-md-6 col-md-offset-3">
+  <%= form_for @user, url: user_path(@user), html: { method: :patch } do |f| %>
+    <h2>変更</h2>
+
+    <%= f.label "お名前" %>
+    <%= f.text_field :name %>
+
+    <%= f.label "メールアドレス" %>
+    <%= f.text_field :email %></p>
+
+    <%= f.label "パスワード" %>
+    <%= f.text_field :password %></p>
+
+    <%= f.label "パスワード(確認)" %>
+    <%= f.text_field :password_confirmation %>
+
+    <div class="content-btn">
+      <input type="submit" value="変更する" class="btn btn-outline-primary">
+    </div>
+  <% end %>
+</div>
