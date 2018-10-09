@@ -1,7 +1,8 @@
-<div class="container-box center row">
-  <div class="container-box-content col-md-6 col-md-offset-3">
+<h1>新規登録</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3 form-box">
     <%= form_for @user, url: users_path(@user), html: { method: :post } do |f| %>
-      <h2>新規登録</h2>
 
       <!-- エラーメッセージを表示する -->
       <%= render 'shared/error_messages' %>
@@ -18,9 +19,7 @@
       <%= f.label "パスワード(確認)" %>
       <%= f.password_field :password_confirmation, class: 'form-control' %>
 
-      <div class="content-btn">
-        <input type="submit" value="登録する" class="btn btn-outline-primary btn-sm">
-      </div>
+      <%= f.submit "登録する", class: "btn btn-outline-primary btn-sm" %>
     <% end %>
   </div>
 </div>

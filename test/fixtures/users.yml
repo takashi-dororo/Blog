@@ -2,3 +2,8 @@ sato:
   name: Sato Taro
   email: satotaro@example.com
   password_digest: <%= User.digest('password') %>
+
+honda:
+  name: Honda Tsubasa
+  email: hondatsubasa@example.org
+  password_digest: <%= User.digest('password') %>
