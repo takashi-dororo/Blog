@@ -11,13 +11,13 @@ class User < ApplicationRecord
 
   # 渡された文字列のハッシュ値を返す
   def User.digest(string)
-    # cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
-    #                                               BCrypt::Engine.cost
-    if ActiveModel::SecurePassword.min_cost
-      cost = BCrypt::Engine::MIM_COS
-    else
-      cost = BCrypt::Engine.cost
-    end
+    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
+                                                  BCrypt::Engine.cost
+    # if ActiveModel::SecurePassword.min_cost
+    #   cost = BCrypt::Engine::MIM_COS
+    # else
+    #   cost = BCrypt::Engine.cost
+    # end
     BCrypt::Password.create(string, cost: cost)
   end
 
