@@ -46,7 +46,7 @@ module SessionsHelper
   def log_out
     forget(current_user)
     session.delete(:user_id)
-    @cuurent_user = nil
+    @current_user.present?
   end
 
   # 記憶したURL(もしくはデフォルト値)にリダイレクト

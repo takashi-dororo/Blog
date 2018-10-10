@@ -18,9 +18,9 @@ class UsersController < ApplicationController
     #strong parameter
     @user = User.create(user_params)
     if @user.save
-      log_in @user
+      log_in(@user)
       flash[:success] = "Thanks singup compelete have fun!!"
-      redirect_to @user
+      redirect_to(@user)
     else
       render 'new'
     end
@@ -32,7 +32,7 @@ class UsersController < ApplicationController
   def update
     if @user.update_attributes(user_params)
      flash[:success] = "変更に成功しました！"
-     redirect_to @user
+     redirect_to(@user)
     else
       render 'edit'
     end
@@ -53,7 +53,7 @@ class UsersController < ApplicationController
       unless logged_in?
         store_location
         flash[:danger] = "ログインしてから、実行してくだい"
-        redirect_to login_url
+        redirect_to(login_url)
       end
     end
 
