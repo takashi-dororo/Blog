@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   post   '/login',           to: 'sessions#create'
   delete '/logout',          to: 'sessions#destroy'
   resources :users
+  resources :account_activations, only: [:edit]
 end
 
 #signup_pathを使用した方が良いのか？

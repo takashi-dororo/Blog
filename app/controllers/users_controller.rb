@@ -19,9 +19,9 @@ class UsersController < ApplicationController
     #strong parameter
     @user = User.create(user_params)
     if @user.save
-      log_in(@user)
-      flash[:success] = "Thanks singup compelete have fun!!"
-      redirect_to(@user)
+      @user.send_activation_email
+      flash[:info] = "アカウントを有効にするには、送信したメールを確認してください"
+      redirect_to(root_url)
     else
       render 'new'
     end

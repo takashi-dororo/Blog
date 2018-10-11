@@ -1,0 +1,5 @@
+初めまして <%= @user.name %>、
+
+Blogへ　ようこそ！ アカウントを有効にするためには下記のリンクをクリックしてください:
+
+<%= edit_account_activation_url(@user.activation_token, email: @user.email) %>

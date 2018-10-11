@@ -1,9 +1,14 @@
 sato:
   name: Sato Taro
-  email: satotaro@example.com
+  email: sato@example.com
   password_digest: <%= User.digest('password') %>
+  admin: true
+  activated: true
+  activated_at: <%= Time.zone.now %>
 
 honda:
   name: Honda Tsubasa
   email: hondatsubasa@example.org
   password_digest: <%= User.digest('password') %>
+  activated: true
+  activated_at: <%= Time.zone.now %>
