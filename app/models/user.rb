@@ -15,7 +15,7 @@ class User < ApplicationRecord
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
                                                   BCrypt::Engine.cost
     # if ActiveModel::SecurePassword.min_cost
-    #   cost = BCrypt::Engine::MIM_COS
+    #   cost = BCrypt::Engine::MIM_COST
     # else
     #   cost = BCrypt::Engine.cost
     # end
