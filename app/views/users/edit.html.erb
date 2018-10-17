@@ -3,26 +3,27 @@
   <div class="col-md-6 form-box">
   <%= form_for @user, url: user_path(@user), html: { method: :patch } do |f| %>
 
-    <%= render 'shared/error_messages' %>
+      <%= render 'shared/error_messages', object: f.object %>
 
-    <%= f.label "お名前" %>
-    <%= f.text_field :name, class: 'form-control' %>
+      <%= f.label "お名前" %>
+      <%= f.text_field :name, class: 'form-control' %>
 
-    <%= f.label "メールアドレス" %>
-    <%= f.text_field :email, class: 'form-control' %></p>
+      <%= f.label "メールアドレス" %>
+      <%= f.text_field :email, class: 'form-control' %></p>
 
-    <%= f.label "パスワード" %>
-    <%= f.password_field :password, class: 'form-control' %></p>
+      <%= f.label "パスワード" %>
+      <%= f.password_field :password, class: 'form-control' %></p>
 
-    <%= f.label "パスワード(確認)" %>
-    <%= f.password_field :password_confirmation, class: 'form-control' %>
+      <%= f.label "パスワード(確認)" %>
+      <%= f.password_field :password_confirmation, class: 'form-control' %>
 
-    <div class="content-btn">
-      <input type="submit" value="変更する" class="btn btn-outline-primary">
-    </div>
-    <div class="gravatar_edit">
-      <%= gravatar_for @user %>
-      <a href="http://gravatar.com/emails" target="_blank" rel="noopener">変更</a>
-    </div>
-  <% end %>
+      <div class="gravatar_edit">
+        <%= gravatar_for @user %>
+        <a href="http://gravatar.com/emails" target="_blank" rel="noopener">画像変更</a>
+      </div>
+      <div class="edit-btn">
+        <input type="submit" value="変更する" class="btn btn-outline-primary">
+      </div>
+    <% end %>
+  </div>
 </div>

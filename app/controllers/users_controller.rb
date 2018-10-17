@@ -9,6 +9,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @posts = @user.posts.paginate(page: params[:page])
   end
 
   def new
@@ -28,6 +29,7 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = User.find(params[:id])
   end
 
   def update
@@ -41,7 +43,6 @@ class UsersController < ApplicationController
 
   def destroy
     User.find(params[:id]).destroy
-    flash[:success] = "ユーザーを削除しました"
     redirect_to(users_url)
   end
 
@@ -49,14 +50,6 @@ class UsersController < ApplicationController
 
     def user_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation)
-    end
-
-    def logged_in_user
-      unless logged_in?
-        store_location
-        flash[:danger] = "ログインしてから、実行してくだい"
-        redirect_to(login_url)
-      end
     end
 
     #正しいユーザーかどうか確認

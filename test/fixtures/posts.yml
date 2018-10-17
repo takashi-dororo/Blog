@@ -1,0 +1,16 @@
+orange:
+  content: "I ate an orange"
+  created_at: <%= 10.minutes.ago %>
+  user: sato
+
+suica:
+  content: "Where is suica most product"
+  created_at: <%= 3.years.ago %>
+
+cat_video:
+  content: "Grooming cats are so cute"
+  created_at: <%= 2.hours.ago %>
+
+most_recent:
+  content: "Writing short test"
+  created_at: <%= Time.zone.now %>

@@ -5,14 +5,14 @@
                                  aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  
+
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
         <%= link_to "Home", root_path %>
       </li>
       <li class="nav-item active">
-        <%= link_to "記事一覧", "#" %>
+        <%= link_to "記事一覧", posts_path %>
       </li>
     </ul>
     <ul class="navbar-nav">
@@ -31,8 +31,11 @@
             <li>
               <%= link_to "ログアウト", logout_path, method: :delete %>
             </li>
-            <li><%= link_to "退会", "#", method: :delete %></li>
+            <li><%= link_to "退会", "#", method: :delete, data: { confirm: "本当に退会しますか？" } %></li>
           </ul>
+        </li>
+        <li class="nav-item">
+          <%= link_to "投稿する", new_post_path %>
         </li>
       <% else %>
         <li class="nav-item">
