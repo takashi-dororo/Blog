@@ -6,11 +6,21 @@ orange:
 suica:
   content: "Where is suica most product"
   created_at: <%= 3.years.ago %>
+  user: sato
 
 cat_video:
   content: "Grooming cats are so cute"
   created_at: <%= 2.hours.ago %>
+  user: sato
 
 most_recent:
   content: "Writing short test"
   created_at: <%= Time.zone.now %>
+  user: sato
+
+<% 30.times do |n| %>
+post_<%= n %>:
+  content: <%= Faker::Lorem.sentence(5) %>
+  created_at: <%= 42.days.ago %>
+  user: sato
+<% end %>

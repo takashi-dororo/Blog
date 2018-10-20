@@ -13,6 +13,8 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
                                          password_confirmation: "bar" } }
     end
     assert_template 'users/new'
+    assert_select 'div#error_explanation'
+    assert_select 'div.field_with_errors'
   end
 
   test "valid signup information with account activation" do
@@ -35,10 +37,8 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     assert_not is_logged_in?
     # 有効化トークンが正しい場合
     get edit_account_activation_path(user.activation_token, email: user.email)
-    # assert user.reload.activated?
-    follow_redirect!
-    # # assert_template 'users/show'
-    # assert is_logged_in?
+    assert user.reload.activated?
+    assert is_logged_in?
   end
 
 end

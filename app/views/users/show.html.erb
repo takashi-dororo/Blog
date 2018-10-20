@@ -6,14 +6,17 @@
         <%= @user.name %>
       </h1>
     </section>
+    <div>
+      <%= link_to "投稿する", new_post_path, class: 'btn btn-outline-primary' %>
+    </div>
   </aside>
   <div class="col-md-8">
     <% if @user.posts.any? %>
-      <h3>Posts (<%= @user.posts.count %>)</h3>
+      <h3>投稿数 (<%= @user.posts.count %>)</h3>
       <ol class="posts">
         <%= render @posts %>
       </ol>
-      <%= will_paginate @posts %>
+      <%= will_paginate @posts, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
     <% end %>
   </div>
 </div>

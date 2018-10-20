@@ -7,6 +7,7 @@ class ActiveSupport::TestCase
   fixtures :all
 
   #テストユーザーがログイン中の場合trueを返す
+  #helperメソッドはテストから呼び出せないので、current_userはX　sessionメソッドはテストでも使用可
   def is_logged_in?
     !session[:user_id].nil?
   end

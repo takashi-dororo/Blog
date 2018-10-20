@@ -17,6 +17,8 @@
       <%= f.label "パスワード(確認)" %>
       <%= f.password_field :password_confirmation, class: 'form-control' %>
 
+      <% end %>
+
       <div class="gravatar_edit">
         <%= gravatar_for @user %>
         <a href="http://gravatar.com/emails" target="_blank" rel="noopener">画像変更</a>
@@ -24,6 +26,5 @@
       <div class="edit-btn">
         <input type="submit" value="変更する" class="btn btn-outline-primary">
       </div>
-    <% end %>
   </div>
 </div>

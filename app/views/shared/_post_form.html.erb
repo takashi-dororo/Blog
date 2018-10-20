@@ -1,9 +1,14 @@
-<%= form_for(@post) do |f| %>
-  <%= render 'shared/error_messages', object: f.object  %>
-  <div class="field">
-    <%= f.text_area :content %>
-  </div>
-  <div class="content-btn">
-    <input type="submit" value="投稿する" class="btn btn-outline-primary">
-  </div>
-<% end %>
+<div class="home-container">
+  <%= form_for(@post) do |f| %>
+    <%= render 'shared/error_messages', object: f.object  %>
+    <div class="home-title">
+      <%= f.text_field :title, placeholder: "タイトル欄"%>
+    </div>
+    <div class="home-field">
+      <%= f.text_area :content, placeholder: "本文を書いてください" %>
+    </div>
+    <div class="content-btn">
+      <input type="submit" value="投稿する" class="btn btn-outline-primary">
+    </div>
+  <% end %>
+</div>

@@ -1,8 +1,9 @@
 class PostsController < ApplicationController
-  before_action :logged_in_user, only: [:create, :destroy]
+  before_action :logged_in_user, only: [:new, :edit, :create, :destroy]
+  before_action :correct_user,   only: :destroy
 
   def index
-    @posts = Post.paginate(page: params[:page], per_page: 10)
+    @posts = Post.paginate(page: params[:page], per_page: 20)
   end
 
   def show
@@ -16,7 +17,7 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params)
     if @post.save
-      flash[:success] = "投稿できました"
+      flash[:success] = "投稿しました"
       redirect_to(posts_path)
     else
       render 'static_pages/home'
@@ -34,7 +35,8 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    Post.find(params[:id]).destroy
+    @post.destroy
+    flash[:success] = "投稿を削除しました"
     redirect_to(posts_path)
   end
 
@@ -42,5 +44,10 @@ class PostsController < ApplicationController
 
     def post_params
       params.require(:post).permit(:title, :content)
+    end
+
+    def correct_user
+      @post = current_user.posts.find_by(id: params[:id])
+      redirect_to(root_url) if @post.nil?
     end
 end

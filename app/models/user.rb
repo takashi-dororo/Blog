@@ -29,12 +29,13 @@ class User < ApplicationRecord
   end
 
   # 永続セッションのためにユーザーをデータベースに記憶する
+  # self.remember_tokenとすることで remember_token属性が設定できる
   def remember
     self.remember_token = User.new_token
     update_attribute(:remember_digest, User.digest(remember_token))
   end
 
-  # 渡されたトークンがダイジェストと一致したらtrueを返す remember_tokenはローカル変数
+  # 渡されたトークンがダイジェストと一致したらtrueを返す
   def authenticated?(attribute, token)
     digest = send("#{attribute}_digest")
     return false if digest.nil?
@@ -48,7 +49,7 @@ class User < ApplicationRecord
 
   #アカウントを有効
   def activate
-    update_attribute(:activatd, true)
+    update_attribute(:activated, true)
     update_attribute(:activated_at, Time.zone.now)
   end
 
@@ -72,6 +73,11 @@ class User < ApplicationRecord
   # パスワード再設定の期限が切れている場合はtrue
   def password_reset_expired?
     reset_sent_at < 2.hours.ago
+  end
+
+  # feedの定義
+  def feed
+    Post.where("user_id = ?", id)
   end
 
   private
